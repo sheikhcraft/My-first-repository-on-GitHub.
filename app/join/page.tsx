@@ -1,21 +1,24 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { JourneyTimeline } from "@/components/journey-timeline";
-import { JoinLinks, WhatsAppButton } from "@/components/join-links";
-import { SiteFooter } from "@/components/site-footer";
+import { SectionHeading } from "@/components/section-heading";
+import { ReassuranceStrip } from "@/components/join/reassurance-strip";
+import { Timetable } from "@/components/join/timetable";
+import { Pricing } from "@/components/join/pricing";
+import { Comparison } from "@/components/join/comparison";
+import { HowToJoin } from "@/components/join/how-to-join";
+import { WhatToBring } from "@/components/join/what-to-bring";
 
 export const metadata: Metadata = {
-  title: "Your path in UCL Boxing",
+  title: "Join UCL Boxing — timetable, pricing and how to start",
   description:
-    "From a free taster to the competition squad — see how you progress at UCL Boxing and join the WhatsApp for session times.",
+    "From a free taster to the competition squad. See the weekly timetable, membership pricing and how to join UCL Boxing in 4 steps.",
 };
 
 export default function JoinPage() {
   return (
-    <>
-      <header className="relative isolate overflow-hidden px-6 pt-8 pb-14 sm:pt-10 sm:pb-20">
+    <main className="flex-1">
+      <div className="relative isolate overflow-hidden px-6 pt-12 pb-14 sm:pt-16 sm:pb-20">
         <Image
           src="/gym-bg.png"
           alt=""
@@ -28,15 +31,8 @@ export default function JoinPage() {
           aria-hidden="true"
           className="absolute inset-0 -z-10 bg-gradient-to-b from-transparent to-background"
         />
-        <div className="mx-auto max-w-3xl animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-[0.3em] text-primary hover:text-white"
-          >
-            <ArrowLeft className="size-4" aria-hidden="true" />
-            UCL Boxing
-          </Link>
-          <h1 className="mt-6 font-heading text-6xl leading-[0.9] tracking-wide text-white text-balance sm:text-8xl">
+        <div className="mx-auto max-w-5xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h1 className="font-heading text-6xl leading-[0.9] tracking-wide text-white text-balance sm:text-8xl">
             Your path in UCL Boxing
           </h1>
           <p className="mt-4 max-w-xl text-lg text-white/75 text-pretty">
@@ -44,20 +40,24 @@ export default function JoinPage() {
             first session to fight night.
           </p>
         </div>
-      </header>
-
-      <main className="mx-auto flex w-full max-w-3xl flex-1 flex-col gap-16 px-6 pb-16">
-        <section aria-label="Progression timeline">
-          <JourneyTimeline />
-        </section>
-        <JoinLinks />
-      </main>
-
-      <SiteFooter />
-
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-white/10 bg-background/90 p-4 backdrop-blur sm:hidden">
-        <WhatsAppButton />
       </div>
-    </>
+
+      <div className="mx-auto flex w-full max-w-5xl flex-col gap-20 px-6 pb-20">
+        <ReassuranceStrip />
+
+        <section aria-labelledby="path-heading">
+          <SectionHeading id="path-heading" eyebrow="Progression" title="Your path" />
+          <div className="max-w-3xl">
+            <JourneyTimeline />
+          </div>
+        </section>
+
+        <Timetable />
+        <Pricing />
+        <Comparison />
+        <HowToJoin />
+        <WhatToBring />
+      </div>
+    </main>
   );
 }
