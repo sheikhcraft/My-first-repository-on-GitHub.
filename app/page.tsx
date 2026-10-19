@@ -3,10 +3,11 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { club } from "@/lib/club-data";
 
 export default function HomePage() {
   return (
-    <main className="relative isolate flex min-h-svh items-center justify-center overflow-hidden px-6 py-16">
+    <main className="relative isolate flex min-h-[calc(100svh-4rem)] items-center justify-center overflow-hidden px-6 py-16">
       <Image
         src="/gym-bg.png"
         alt=""
@@ -22,13 +23,17 @@ export default function HomePage() {
 
       <div className="flex max-w-3xl flex-col items-center text-center text-white animate-in fade-in slide-in-from-bottom-4 duration-1000">
         <p className="text-sm font-semibold uppercase tracking-[0.3em] text-primary">
-          UCL Boxing
+          {club.name}
         </p>
         <h1 className="mt-4 font-heading text-6xl leading-[0.9] tracking-wide text-balance sm:text-8xl md:text-9xl">
           Ready to step in?
         </h1>
         <p className="mt-6 max-w-xl text-lg text-white/85 text-pretty sm:text-xl">
           Fitter. Stronger. Sharper. Your first session is free.
+        </p>
+        <p className="mt-3 text-sm font-medium text-white/60">
+          No experience needed <span aria-hidden="true" className="text-primary">·</span>{" "}
+          No sparring for beginners
         </p>
 
         <div className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
